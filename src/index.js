@@ -19,6 +19,11 @@ export { OutputType, jsPDF };
  *  fileName: string,
  *  orientationLandscape?: boolean,
  *  compress?: boolean,
+ *  headerTextSize?: number,
+ *  labelTextSize?: number,
+ *  fieldTextSize?: number,
+ *  lineHeight?: number,
+ *  subLineHeight?: number,
  *  logo?: {
  *      src?: string,
  *      type?: string,
@@ -93,6 +98,11 @@ function jsPDFInvoiceTemplate(props) {
     fileName: props.fileName || "",
     orientationLandscape: props.orientationLandscape || false,
     compress: props.compress || false,
+    headerTextSize: props.headerTextSize || 20,
+    labelTextSize: props.labelTextSize || 12,
+    fieldTextSize: props.fieldTextSize || 10,
+    lineHeight: props.lineHeight || 6,
+    subLineHeight: props.subLineHeight || 4,
     logo: {
       src: props.logo?.src || "",
       type: props.logo?.type || "",
@@ -187,11 +197,11 @@ function jsPDFInvoiceTemplate(props) {
   //var startPointRectPanel1 = currentHeight + 6;
 
   var pdfConfig = {
-    headerTextSize: 20,
-    labelTextSize: 12,
-    fieldTextSize: 10,
-    lineHeight: 6,
-    subLineHeight: 4,
+    headerTextSize: param.headerTextSize,
+    labelTextSize: param.labelTextSize,
+    fieldTextSize: param.fieldTextSize,
+    lineHeight: param.lineHeight,
+    subLineHeight: param.subLineHeight,
   };
 
   doc.setFontSize(pdfConfig.headerTextSize);
