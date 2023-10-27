@@ -213,7 +213,7 @@ function jsPDFInvoiceTemplate(props) {
 
   doc.setFontSize(pdfConfig.headerTextSize);
   doc.setTextColor(colorBlack);
-  doc.text(docWidth - 100, currentHeight, param.business.name, "right");
+  doc.text(docWidth - 10, currentHeight, param.business.name, "right");
   doc.setFontSize(pdfConfig.fieldTextSize);
 
   if (param.logo.src) {
@@ -270,7 +270,7 @@ function jsPDFInvoiceTemplate(props) {
 
   //Contact part
   doc.setTextColor(colorGray);
-  doc.setFontSize(pdfConfig.fieldTextSize);
+  doc.setFontSize(pdfConfig.fieldTextSize + 2);
   currentHeight += pdfConfig.lineHeight;
   if (param.contact.label) {
     doc.text(10, currentHeight, param.contact.label);
@@ -282,6 +282,7 @@ function jsPDFInvoiceTemplate(props) {
   if (param.contact.name) doc.text(10, currentHeight, param.contact.name);
 
   if (param.invoice.label && param.invoice.num) {
+    doc.setFontSize(pdfConfig.headerTextSize + 3);
     doc.text(
       docWidth - 10,
       currentHeight,
